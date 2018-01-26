@@ -1,6 +1,7 @@
 buildscript {
 	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "1.7.1"
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "1.9.0"
+		classpath group: "com.liferay", name: "com.liferay.ant.bnd", version: "2.0.43"
 		classpath group: "net.saliman", name: "gradle-properties-plugin", version: "1.4.6"
 	}
 
@@ -8,6 +9,8 @@ buildscript {
 		maven {
 			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
+
+		mavenLocal()
 	}
 }
 
