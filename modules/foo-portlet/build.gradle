@@ -6,4 +6,9 @@ dependencies {
 	compileOnly group: "jstl", name: "jstl"
 	compileOnly group: "org.osgi", name: "org.osgi.core"
 	compileOnly group: "org.osgi", name: "osgi.cmpn"
+	compileOnly project(":modules:foo-api")
+}
+
+resolve {
+	distro = project.rootProject.files('distro2.jar')
 }

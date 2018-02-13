@@ -1,5 +1,6 @@
 package foo.portlet.portlet;
 
+import foo.api.FooService;
 import foo.portlet.constants.FooPortletKeys;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
@@ -29,8 +30,10 @@ import org.osgi.service.component.annotations.Reference;
 )
 public class FooPortlet extends MVCPortlet {
 
-@Reference
-UserLocalService user;
+	@Reference
+	UserLocalService user;
 
+	@Reference
+	FooService fooService;
 }
 
