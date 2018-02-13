@@ -3,10 +3,12 @@ package foo.portlet.portlet;
 import foo.portlet.constants.FooPortletKeys;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
+import com.liferay.portal.kernel.service.UserLocalService;
 
 import javax.portlet.Portlet;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 /**
  * @author greg
@@ -26,4 +28,9 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class FooPortlet extends MVCPortlet {
+
+@Reference
+UserLocalService user;
+
 }
+

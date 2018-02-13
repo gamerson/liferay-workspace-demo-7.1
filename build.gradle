@@ -1,33 +1,30 @@
-repositories {
-	maven {
-		url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
-	}
+import com.liferay.gradle.plugins.target.platform.ResolveTask
 
-	maven {
-		credentials {
-			username "$nexusUsername"
-			password "$nexusPassword"
+buildscript {
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.target.platform", version: "1.0.0"
+	}	
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
 		}
-
-		url "https://repository.liferay.com/nexus/content/repositories/xanadu/"
-	}
-
-	mavenLocal()
-}
-
-subprojects {
-	afterEvaluate {
-		repositories {
-			maven {
-				credentials {
-					username "$nexusUsername"
-					password "$nexusPassword"
-				}
-
-				url "https://repository.liferay.com/nexus/content/repositories/xanadu/"
-			}
-
+		maven {
+			url "https://repository.liferay.com/nexus/service/local/repositories/liferay-public-snapshots/content"
+		}
 		mavenLocal()
-		}
 	}
+
 }
+
+apply plugin: "com.liferay.target.platform"
+
+targetPlatform {
+	bom "com.liferay:com.liferay.ce.portal.bom:7.0.4-SNAPSHOT", "com.liferay:com.liferay.ce.portal.compile.only:7.0.4-SNAPSHOT"
+	ideIncludeGroup "com.liferay", "com.liferay.portal"
+}
+
+resolve {
+	distro files('distro2.jar')
+}
+
+// customtize the 'resolvable' bundles
