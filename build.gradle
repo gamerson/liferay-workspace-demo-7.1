@@ -1,5 +1,3 @@
-import com.liferay.gradle.plugins.target.platform.ResolveTask
-
 buildscript {
 	dependencies {
 		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.target.platform", version: "1.0.0"
@@ -18,13 +16,13 @@ buildscript {
 
 apply plugin: "com.liferay.target.platform"
 
+dependencies {
+	targetPlatformBoms "com.liferay:com.liferay.ce.portal.bom:7.0.4-SNAPSHOT"
+	targetPlatformBoms "com.liferay:com.liferay.ce.portal.compile.only:7.0.4-SNAPSHOT"
+	targetPlatformDistro "com.liferay:com.liferay.ce.portal.distro:7.0.5-SNAPSHOT"
+}
+
 targetPlatform {
-	bom "com.liferay:com.liferay.ce.portal.bom:7.0.4-SNAPSHOT", "com.liferay:com.liferay.ce.portal.compile.only:7.0.4-SNAPSHOT"
 	ideIncludeGroup "com.liferay", "com.liferay.portal"
+	resolveOnlyIf { it.name != "foo-rule" }
 }
-
-resolve {
-	distro files('distro2.jar')
-}
-
-// customtize the 'resolvable' bundles

@@ -3,7 +3,3 @@ dependencies {
 	compileOnly group: "org.osgi", name: "osgi.cmpn", version: "6.0.0"
 	compileOnly project(":modules:foo-api")
 }
-
-resolve {
-	distro = project.rootProject.files('distro2.jar')
-}
