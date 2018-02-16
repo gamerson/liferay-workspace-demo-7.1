@@ -3,6 +3,8 @@ package foo.portlet.portlet;
 import foo.api.FooService;
 import foo.portlet.constants.FooPortletKeys;
 
+import com.google.common.base.Ascii;
+import com.google.common.base.Strings;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 import com.liferay.portal.kernel.service.UserLocalService;
 
@@ -29,6 +31,12 @@ import org.osgi.service.component.annotations.Reference;
 	service = Portlet.class
 )
 public class FooPortlet extends MVCPortlet {
+
+	public FooPortlet() {
+		super();
+
+		Strings.padEnd("foo", 6, ' ');
+	}
 
 	@Reference
 	UserLocalService user;
