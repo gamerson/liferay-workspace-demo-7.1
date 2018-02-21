@@ -14,7 +14,7 @@ buildscript {
 
 }
 
-apply plugin: "com.liferay.target.platform"
+apply plugin: "com.liferay.target.platform.ide"
 
 dependencies {
 	targetPlatformBoms "com.liferay:com.liferay.ce.portal.bom:7.0.4-SNAPSHOT"
@@ -23,9 +23,11 @@ dependencies {
 }
 
 targetPlatform {
-	ideIncludeGroup "com.liferay", "com.liferay.portal"
-
 	resolveOnlyIf { 
-		it.name != "foo-rule"
+		it.file('bnd.bnd').exists() && it.name != "foo-rule"
 	}
+}
+
+targetPlatformIDE {
+	includeGroup "com.liferay", "com.liferay.portal"
 }
