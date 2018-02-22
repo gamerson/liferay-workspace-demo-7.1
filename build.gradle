@@ -24,10 +24,10 @@ dependencies {
 
 targetPlatform {
 	resolveOnlyIf { 
-		it.file('bnd.bnd').exists() && it.name != "foo-rule"
+		it.name != "foo-rule"
 	}
 }
 
 targetPlatformIDE {
-	includeGroup "com.liferay", "com.liferay.portal"
+	includeGroups "com.liferay", "com.liferay.portal"
 }
