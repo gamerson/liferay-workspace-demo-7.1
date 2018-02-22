@@ -1,7 +1,4 @@
 buildscript {
-	dependencies {
-		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.target.platform", version: "1.0.0"
-	}	
 	repositories {
 		maven {
 			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
@@ -14,20 +11,12 @@ buildscript {
 
 }
 
-apply plugin: "com.liferay.target.platform.ide"
-
 dependencies {
-	targetPlatformBoms "com.liferay:com.liferay.ce.portal.bom:7.0.4-SNAPSHOT"
-	targetPlatformBoms "com.liferay:com.liferay.ce.portal.compile.only:7.0.4-SNAPSHOT"
-	targetPlatformDistro "com.liferay:com.liferay.ce.portal.distro:7.0.5-SNAPSHOT"
+	providedModules('com.google.guava:guava:23.0')
 }
 
 targetPlatform {
 	resolveOnlyIf { 
 		it.name != "foo-rule"
 	}
-}
-
-targetPlatformIDE {
-	includeGroups "com.liferay", "com.liferay.portal"
 }
